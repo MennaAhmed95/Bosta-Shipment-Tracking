@@ -1,14 +1,27 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import reportWebVitals from './reportWebVitals';
+import React, { Suspense } from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import "./i18n";
+import { create } from "jss";
+import rtl from "jss-rtl";
+import App from "./App";
+import appTheme from "./styles/appTheme";
+import { StylesProvider, jssPreset } from "@material-ui/styles";
+import reportWebVitals from "./reportWebVitals";
 
+import { ThemeProvider } from "@material-ui/core/styles";
+const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
-  document.getElementById('root')
+  <Suspense fallback={<div>loading....</div>}>
+    <React.StrictMode>
+      <StylesProvider jss={jss}>
+        <ThemeProvider theme={appTheme}>
+          <App />
+        </ThemeProvider>
+      </StylesProvider>
+    </React.StrictMode>
+  </Suspense>,
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function

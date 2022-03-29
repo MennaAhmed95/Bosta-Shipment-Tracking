@@ -1,0 +1,30 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+}
+a {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+.container {
+  width: 90%;
+  padding: 0 15px;
+  margin: 0 auto;
+}
+.MuiBackdrop-root {
+  background-color: transparent !important;
+}
+.MuiDrawer-paperAnchorTop {
+  top: 60px !important;
+}
+.MuiButton-root,
+.MuiTab-root {
+  text-transform: capitalize !important;
+}
