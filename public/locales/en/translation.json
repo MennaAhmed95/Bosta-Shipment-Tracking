@@ -25,10 +25,12 @@
   "customerNotAtTheAddress": "Customer not found in delivery location",
   "canceledByMerchant": "Shipment Canceled by Merchant",
   "deliveryAddress": "Received Delivery Location",
+  "delivery": "Delivery Location",
   "problemWithShipment": "Is there a problem with your shipment?",
   "reportProblem": "Report Problem",
   "merchantName": "Merchant Name",
   "deliveryDateWithin": "Delivery date within",
   "waitingForCustomerAction": "Waiting for customer Action",
-  "deliveredToSender": "Delivered to sender"
+  "deliveredToSender": "Delivered to sender",
+  "inTransit": "In Transit"
 }

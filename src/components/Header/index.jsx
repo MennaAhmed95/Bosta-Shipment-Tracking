@@ -17,6 +17,8 @@ import { KeyboardArrowDown, Search } from "@material-ui/icons";
 import { useStyles, languages } from "./headerStyle";
 import i18next from "i18next";
 import { useTranslation } from "react-i18next";
+import { getTransitEvent } from "../../redux/Tracking/action";
+import { useDispatch } from "react-redux";
 
 const Header = () => {
   const currentLanguageCode = localStorage.i18nextLng || "en";
@@ -31,12 +33,18 @@ const Header = () => {
   const classes = useStyles();
 
   const [anchorEl, setAnchorEl] = React.useState(null);
+  const [track, setTrack] = React.useState(null);
   const open = Boolean(anchorEl);
+  const dispatch = useDispatch();
   const handleClick = (event) => {
     setAnchorEl(event.currentTarget);
   };
   const handleClose = () => {
     setAnchorEl(null);
+  };
+  const handleSearch = (track) => {
+    console.log(track);
+    dispatch(getTransitEvent(track));
   };
   const btnTracking = (
     <>
@@ -77,9 +85,15 @@ const Header = () => {
           autoComplete="off"
         >
           <FormControl sx={{ width: "25ch" }}>
-            <OutlinedInput placeholder={t("No")} />
+            <OutlinedInput
+              placeholder={t("No")}
+              onChange={(e) => setTrack(e.target.value)}
+            />
           </FormControl>
-          <div className={`${classes.search} ${classes.disp}`}>
+          <div
+            className={`${classes.search} ${classes.disp}`}
+            onClick={() => handleSearch(track)}
+          >
             <Search color="white" />
           </div>
         </Box>

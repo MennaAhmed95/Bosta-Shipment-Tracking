@@ -3,6 +3,10 @@
   margin: 0;
   padding: 0;
 }
+html {
+  scroll-behavior: smooth;
+  overflow-x: hidden;
+}
 body {
   width: 100%;
 }
@@ -27,4 +31,8 @@ ul {
 .MuiButton-root,
 .MuiTab-root {
   text-transform: capitalize !important;
+}
+
+.MuiStepper-root {
+  padding: 24px 0 !important;
 }

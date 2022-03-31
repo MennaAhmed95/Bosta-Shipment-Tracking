@@ -25,10 +25,12 @@
   "customerNotAtTheAddress": "العميل غير متواجد في العنوان",
   "canceledByMerchant": "تم الغاء الشحنة من التاجر",
   "deliveryAddress": "عنوان التسليم",
-  "problemWithShipment": "هل يوجد مشكلة في شحنتك",
+  "delivery": "عنوان التسليم",
+  "problemWithShipment": "هل توجد مشكلة في شحنتك ؟",
   "reportProblem": "ابلاغ عن مشكلة",
   "merchantName": "اسم التاجر",
   "deliveryDateWithin": "موعد التسليم خلال",
   "waitingForCustomerAction": "العميل طلب التاجيل ليوم اخر",
-  "deliveredToSender": "تم تسليمها للمرسل"
+  "deliveredToSender": "تم تسليمها للمرسل",
+  "inTransit": "اثناء النقل"
 }

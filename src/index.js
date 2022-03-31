@@ -8,15 +8,19 @@ import App from "./App";
 import appTheme from "./styles/appTheme";
 import { StylesProvider, jssPreset } from "@material-ui/styles";
 import reportWebVitals from "./reportWebVitals";
+import store from "./redux/store";
 
 import { ThemeProvider } from "@material-ui/core/styles";
+import { Provider } from "react-redux";
 const jss = create({ plugins: [...jssPreset().plugins, rtl()] });
 ReactDOM.render(
   <Suspense fallback={<div>loading....</div>}>
     <React.StrictMode>
       <StylesProvider jss={jss}>
         <ThemeProvider theme={appTheme}>
-          <App />
+          <Provider store={store}>
+            <App />
+          </Provider>
         </ThemeProvider>
       </StylesProvider>
     </React.StrictMode>
