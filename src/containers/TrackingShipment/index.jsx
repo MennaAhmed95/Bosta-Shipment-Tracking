@@ -4,10 +4,19 @@ import Steper from "../../components/Steper";
 import useStyles from "./styleTracking";
 import TrakingTable from "../../components/TrakingTable";
 import AddressOrProblem from "../../components/AddressOrProblem";
+import { useSelector } from "react-redux";
+import getCurrentDate from "./../../utils/getCurrentDate";
+import translateDetails from "./../../utils/translateDetails";
+import chosseColor from "./../../utils/chooseColor";
 
 const TrackingPage = () => {
   const { t } = useTranslation();
   const classes = useStyles();
+  const {
+    TrackingNumber,
+    PromisedDate,
+    CurrentStatus: { timestamp, state },
+  } = useSelector((state) => state.data);
   return (
     <div
       style={{ marginTop: "2rem", width: "80%", padding: 0 }}
@@ -16,12 +25,16 @@ const TrackingPage = () => {
       <TableContainer className={classes.cont}>
         <div className={classes.row}>
           <div className={classes.col}>
-            <div>{t("No")}</div>
-            <div>display</div>
+            <div>
+              {t("No")}:{TrackingNumber}
+            </div>
+            <h3 style={{ color: chosseColor(state) }}>
+              {t(translateDetails(state))}
+            </h3>
           </div>
           <div className={classes.col}>
             <div> {t("latestUpdate")}</div>
-            <div>display</div>
+            <div>{getCurrentDate(timestamp)}</div>
           </div>
           <div className={classes.col}>
             <div> {t("merchantName")}</div>
@@ -29,7 +42,7 @@ const TrackingPage = () => {
           </div>
           <div className={classes.col}>
             <div> {t("deliveryDateWithin")}</div>
-            <div>display</div>
+            <div>{getCurrentDate(PromisedDate)}</div>
           </div>
         </div>
         <Steper />

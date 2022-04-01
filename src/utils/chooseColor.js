@@ -1,7 +1,7 @@
 const chosseColor = (state) => {
   let color;
   if (state === "DELIVERED") {
-    color = "green";
+    color = "#1ac45e";
   } else if (state === "DELIVERED_TO_SENDER") {
     color = "orange";
   } else color = "red";

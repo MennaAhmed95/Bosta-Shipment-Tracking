@@ -7,9 +7,10 @@ import StepLabel from "@material-ui/core/StepLabel";
 import { Save, LocalShipping, Check } from "@material-ui/icons";
 import StepConnector from "@material-ui/core/StepConnector";
 import { useTranslation } from "react-i18next";
+import { useSelector } from "react-redux";
+import chosseColor from "./../../utils/chooseColor";
 
-let color = "#784af4";
-
+let color = localStorage.getItem("color");
 const QontoConnector = withStyles({
   alternativeLabel: {
     top: 10,
@@ -79,32 +80,31 @@ function QontoStepIcon(props) {
   );
 }
 
-const useStyles = makeStyles((theme) => ({
-  root: {
-    width: "100%",
-  },
-}));
-
 function getSteps(t) {
   return [
-    t("shipmentCreated"),
+    t("TICKET_CREATED"),
     t("shipmentHasBeenReceived"),
-    t("outForDelivery"),
-    t("deliveredDone"),
+    t("OUT_FOR_DELIVERY"),
+    t("PACKAGE_RECEIVED"),
   ];
 }
 
 export default function Steper() {
-  const classes = useStyles();
-  const [activeStep, setActiveStep] = React.useState(2);
+  let activeStep = 2;
   const { t } = useTranslation();
   const steps = getSteps(t);
+  const {
+    CurrentStatus: { state },
+  } = useSelector((state) => state.data);
+  let color = chosseColor(state);
+  localStorage.setItem("color", color);
+  console.log(state, "stt", color);
 
-  // const handleNext = () => {
-  //   if (activeStep === 4) {
-  //     setActiveStep(4);
-  //   } else setActiveStep((prevActiveStep) => prevActiveStep + 1);
-  // };
+  if (state === "DELIVERED") {
+    activeStep = 4;
+  } else if (state === "DELIVERED_TO_SENDER") {
+    activeStep = 3;
+  }
   return (
     <Stepper
       alternativeLabel

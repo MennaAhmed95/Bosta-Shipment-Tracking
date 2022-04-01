@@ -1,35 +1,32 @@
-import { useTranslation } from "react-i18next";
-
-const TranslateDetails = (detail) => {
-  const { t } = useTranslation();
+const translateDetails = (detail) => {
   let state;
   switch (detail) {
     case "TICKET_CREATED":
-      state = t("shipmentCreated");
+      state = detail;
       break;
     case "PACKAGE_RECEIVED":
-      state = t("deliveredDone");
+      state = detail;
       break;
     case "NOT_YET_SHIPPED":
-      state = t("notDelivered");
+      state = detail;
       break;
     case "OUT_FOR_DELIVERY":
-      state = t("outForDelivery");
+      state = detail;
       break;
     case "WAITING_FOR_CUSTOMER_ACTION":
-      state = t("waitingForCustomerAction");
+      state = detail;
       break;
     case "DELIVERED":
-      state = t("delivered");
+      state = detail;
       break;
     case "DELIVERED_TO_SENDER":
-      state = t("deliveredToSender");
+      state = detail;
       break;
     case "RECEIVED_DELIVERY_LOCATION":
-      state = t("deliveryAddress");
+      state = detail;
       break;
     case "IN_TRANSIT":
-      state = t("inTransit");
+      state = detail;
       break;
 
     default:
@@ -38,4 +35,4 @@ const TranslateDetails = (detail) => {
   return state;
 };
 
-export default TranslateDetails;
+export default translateDetails;

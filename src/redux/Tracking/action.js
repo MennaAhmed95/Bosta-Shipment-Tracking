@@ -5,6 +5,6 @@ export const getTransitEvent = (trackNo) => {
   return async (dispatch) => {
     const result = await getAllTransitEventsAsync(trackNo);
     console.log(result, "action");
-    dispatch({ type: GET_Transit_Events, payload: trackNo });
+    dispatch({ type: GET_Transit_Events, payload: result });
   };
 };

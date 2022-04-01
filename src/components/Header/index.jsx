@@ -19,13 +19,14 @@ import i18next from "i18next";
 import { useTranslation } from "react-i18next";
 import { getTransitEvent } from "../../redux/Tracking/action";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 
 const Header = () => {
   const currentLanguageCode = localStorage.i18nextLng || "en";
   const currentLanguage = languages.find((l) => l.code === currentLanguageCode);
   const [langCode, setLangCode] = useState(currentLanguageCode);
   const { t } = useTranslation();
-  const [value, setValue] = useState();
+  const [value, setValue] = useState(0);
   const theme = useTheme();
   console.log(theme);
   const isMatch = useMediaQuery(theme.breakpoints.down("md"));
@@ -42,9 +43,11 @@ const Header = () => {
   const handleClose = () => {
     setAnchorEl(null);
   };
+  const history = useHistory();
   const handleSearch = (track) => {
     console.log(track);
     dispatch(getTransitEvent(track));
+    history.push("/trackingShipment");
   };
   const btnTracking = (
     <>
@@ -94,7 +97,7 @@ const Header = () => {
             className={`${classes.search} ${classes.disp}`}
             onClick={() => handleSearch(track)}
           >
-            <Search color="white" />
+            <Search style={{ color: "white" }} />
           </div>
         </Box>
       </StyledMenu>
@@ -129,17 +132,16 @@ const Header = () => {
                 value={value}
                 onChange={(e, value) => setValue(value)}
               >
-                <Tab label={t("home")} className={classes.font} />
-                <Tab label={t("price")} className={classes.font} />
-                <Tab label={t("contact")} className={classes.font} />
-                <Tab label={t("careers")} className={classes.font} />
+                <Tab label={t("home")} className={classes.font} value={0} />
+                <Tab label={t("price")} className={classes.font} value={1} />
+                <Tab label={t("contact")} className={classes.font} value={2} />
+                <Tab label={t("careers")} className={classes.font} value={3} />
               </Tabs>
               <div>
                 {btnTracking}
                 <Button
                   className={classes.btn + " " + classes.font}
                   sx={{ marginLeft: "10px" }}
-                  variant="outline"
                 >
                   {t("singin")}
                 </Button>

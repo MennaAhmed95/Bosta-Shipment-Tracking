@@ -36,7 +36,7 @@ const DrawerComp = ({ btnTracking }) => {
         sx={{ color: "white", marginLeft: "auto" }}
         onClick={() => setOpenDrawer(!openDrawer)}
       >
-        <MenuIcon color="white" />
+        <MenuIcon style={{ color: "white" }} />
       </IconButton>
     </>
   );
