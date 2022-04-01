@@ -17,6 +17,8 @@ const TrackingPage = () => {
     PromisedDate,
     CurrentStatus: { timestamp, state },
   } = useSelector((state) => state.data);
+  let color = chosseColor(state);
+  localStorage.setItem("color", color);
   return (
     <div
       style={{ marginTop: "2rem", width: "80%", padding: 0 }}
@@ -45,7 +47,7 @@ const TrackingPage = () => {
             <div>{getCurrentDate(PromisedDate)}</div>
           </div>
         </div>
-        <Steper />
+        <Steper state={state} />
       </TableContainer>
       <div style={{ height: "2.5rem" }}></div>
       <TableContainer>

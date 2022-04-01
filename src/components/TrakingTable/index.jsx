@@ -49,7 +49,7 @@ const TrakingTable = () => {
                       : ""}
                   </TableCell>
                   <TableCell>
-                    {row?.state ? translateDetails(t(row?.state)) : ""}
+                    {t(translateDetails(row?.state))}
                     <br />
                     {row?.reason}
                   </TableCell>
