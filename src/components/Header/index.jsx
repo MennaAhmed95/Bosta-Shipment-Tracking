@@ -119,6 +119,7 @@ const Header = () => {
           <img
             src="https://bosta.co/wp-content/uploads/2019/08/bosta_logo_en_red.svg"
             alt="logo"
+            onClick={() => history.push("/")}
           />
 
           {isMatch ? (
@@ -132,7 +133,12 @@ const Header = () => {
                 value={value}
                 onChange={(e, value) => setValue(value)}
               >
-                <Tab label={t("home")} className={classes.font} value={0} />
+                <Tab
+                  label={t("home")}
+                  className={classes.font}
+                  value={0}
+                  onClick={() => history.push("/")}
+                />
                 <Tab label={t("price")} className={classes.font} value={1} />
                 <Tab label={t("contact")} className={classes.font} value={2} />
                 <Tab label={t("careers")} className={classes.font} value={3} />
